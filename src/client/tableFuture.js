@@ -34,7 +34,7 @@ export default () => (
           ))}
         </TableBody>
       </Table>
-      <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
+      <Button ClassName="button" variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
        
     </Paper>
   </div>
