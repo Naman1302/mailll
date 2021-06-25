@@ -1,5 +1,5 @@
 import React from "react";
-import TABLE from "./client/table.js";
+import TABLE from "./client/tableFuture.js";
 function Dashboard() {
     return (
         <div>
