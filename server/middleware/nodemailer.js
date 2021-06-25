@@ -17,17 +17,17 @@ class SendMails {
     if(!testAccount){
         testAccount = await nodemailer.createTestAccount();
     }
-    if(!transporter){
-        transporter = nodemailer.createTransport({
-            host: "smtp.ethereal.email",
-            port: 587,
-            secure: false, // true for 465, false for other ports
-            auth: {
-              user: testAccount.user, // generated ethereal user
-              pass: testAccount.pass, // generated ethereal password
-            },
-        });
-    }
+//     if(!transporter){
+//         transporter = nodemailer.createTransport({
+//             host: "smtp.ethereal.email",
+//             port: 587,
+//             secure: false, // true for 465, false for other ports
+//             auth: {
+//               user: testAccount.user, // generated ethereal user
+//               pass: testAccount.pass, // generated ethereal password
+//             },
+//         });
+//     }
     let token = jwt.sign({ email }, "JWTSECRET", { expiresIn: "24h" });
     let location = "http://localhost:5000/";
 
