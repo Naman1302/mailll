@@ -5,7 +5,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import rows from "./rowsData";
+import rows from "./table2data.js";
 import { TextField, Button, Typography } from '@material-ui/core';
 
 export default () => (
