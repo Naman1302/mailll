@@ -2,6 +2,7 @@ const cookieParser = require('cookie-parser')
 const express = require('express')
 const index = require('./routes/index')  
 const mailRoutes = require('./routes/mail')  
+const scheduler = require('./controllers/scheduler')  
 const app = express()
 const cors = require('cors')
 const port = process.env.PORT||8000
@@ -17,6 +18,7 @@ app.use(cookieParser())
 app.use(cors({credentials: true, origin: fURL}))
 app.use(index)
 app.use(mailRoutes)
+scheduler();
 
 app.listen(port, ()=>{
     console.log(`listening on port ${port}`)

@@ -1,5 +1,4 @@
 const nodemailer = require("nodemailer");
-const cron = require("node-cron");
 const jwt = require("jsonwebtoken");
 const request = require("request");
 const { json } = require("body-parser");
@@ -17,17 +16,17 @@ class SendMails {
     if(!testAccount){
         testAccount = await nodemailer.createTestAccount();
     }
-//     if(!transporter){
-//         transporter = nodemailer.createTransport({
-//             host: "smtp.ethereal.email",
-//             port: 587,
-//             secure: false, // true for 465, false for other ports
-//             auth: {
-//               user: testAccount.user, // generated ethereal user
-//               pass: testAccount.pass, // generated ethereal password
-//             },
-//         });
-//     }
+    if(!transporter){
+        transporter = nodemailer.createTransport({
+            host: "smtp.ethereal.email",
+            port: 587,
+            secure: false, // true for 465, false for other ports
+            auth: {
+              user: testAccount.user, // generated ethereal user
+              pass: testAccount.pass, // generated ethereal password
+            },
+        });
+    }
     let token = jwt.sign({ email }, "JWTSECRET", { expiresIn: "24h" });
     let location = "http://localhost:5000/";
 
@@ -101,7 +100,6 @@ class SendMails {
             </div>
         </div>`; // html body
 
-
     let data = {
         from: testAccount.email,
         html,
@@ -109,24 +107,11 @@ class SendMails {
         to: [email, ],
         text,
     };
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: testAccount.email,
-          pass: testAccount.pass
-        }
-    });
-    cron.schedule('* * * * *',()=>{
-        transporter.sendMail(data,(error,info)=>{
-            if(error)
-                console.log(error);
-            else
-                console.log('Mail sent'+info.response);    
-        });
-    });
     let info = await transporter.sendMail(data);
     console.log("Message sent: %s", info.messageId);
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     }
+         
 }
+
 module.exports = new SendMails();

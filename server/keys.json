@@ -1,0 +1,6 @@
+{
+  "client_id": "382906126798-og7711la0b5in7hruilujrii68j9f2v4.apps.googleusercontent.com",
+  "client_secret" : "U4pJqbzFx5PPTIpuG_gpsdDR",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token"
+}
