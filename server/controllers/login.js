@@ -11,7 +11,7 @@ async function login(req,res){
             res.cookie("ACCESS_TOKEN",token,{
                 httpOnly: true
             });
-            res.json({email: fUser.email, token: token})
+            res.json({user: fUser, token: token})
         }else{
             console.log(err)
             res.json(false);
