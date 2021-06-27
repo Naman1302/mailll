@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const isAuthenticated = require('../middleware/isAuthenticated') 
 const mailer = require('../controllers/mailer')
-const scheduler = require('../controlllers/scheduler')
+const scheduler = require('../controllers/scheduler')
 const Mail = require('../models/Mail')
 
 router.post('/mail', isAuthenticated, mailer)
