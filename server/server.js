@@ -7,9 +7,13 @@ const cors = require('cors')
 const port = process.env.PORT||8000
 const fURL = process.env.fURL||'http://localhost:3000/'
 const mongoose = require('mongoose')
-const MONGODB_URL = process.env.MONGODB_URL||'mongodb://localhost:27017/login_portal'
+const MONGODB_URL ="mongodb+srv://namankd:##haggar01@cluster0.ifb0l.mongodb.net/Mailer?retryWrites=true&w=majority";
 
 mongoose.connect(MONGODB_URL,{useUnifiedTopology:true, useNewUrlParser: true})
+.then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
+  .catch((error) => console.log(`${error} did not connect`));
+
+mongoose.set('useFindAndModify', false);
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
