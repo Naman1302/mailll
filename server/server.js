@@ -1,3 +1,4 @@
+require('dotenv').config();
 const cookieParser = require('cookie-parser')
 const express = require('express')
 const index = require('./routes/index')  
@@ -7,9 +8,8 @@ const cors = require('cors')
 const port = process.env.PORT||8000
 const fURL = process.env.fURL||'http://localhost:3000/'
 const mongoose = require('mongoose')
-const MONGODB_URL ="mongodb+srv://namankd:##haggar01@cluster0.ifb0l.mongodb.net/Mailer?retryWrites=true&w=majority";
 
-mongoose.connect(MONGODB_URL,{useUnifiedTopology:true, useNewUrlParser: true})
+mongoose.connect(process.env.MONGODB_URL,{useUnifiedTopology:true, useNewUrlParser: true})
 .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
   .catch((error) => console.log(`${error} did not connect`));
 
