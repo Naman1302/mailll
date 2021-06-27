@@ -1,4 +1,3 @@
-//* To send mails
 const Mail = require('../models/Mail')
 const nodemailer = require('nodemailer')
 

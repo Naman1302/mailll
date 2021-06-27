@@ -8,7 +8,7 @@ async function login(req,res){
     const hash = await bcrypt.hash(req.body.password,10)
     const UserData = {
         password: hash,
-        username: req.body.username
+        email: req.body.email
     }
 
     User.create(UserData,async (err,nUser)=>{
@@ -18,7 +18,7 @@ async function login(req,res){
             res.cookie("ACCESS_TOKEN",token,{
                 httpOnly: true
             });
-            res.json({username: nUser.username})
+            res.json({email: nUser.email, token: token})
         }else{
             console.log(err)
             res.json(false)
