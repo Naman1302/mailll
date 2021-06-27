@@ -9,7 +9,8 @@ const fURL = process.env.fURL||'http://localhost:3000/'
 const mongoose = require('mongoose')
 const MONGODB_URL = process.env.MONGODB_URL||'mongodb://localhost:27017/login_portal'
 
-mongoose.connect(MONGODB_URL,{useUnifiedTopology:true, useNewUrlParser: true})
+mongoose.connect(MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
